@@ -1,0 +1,21 @@
+<div class='row'>
+    <aside class='col-xs-4'>
+        <div class='panel panel-defult'>
+            <div class='panel-heading'>
+                <h3 class='panel-title'><%= @user.name %></h3>
+            </div>
+            <div class='panel-body'>
+                <img class='meida-object img-rounded img-responsive' src='<%= gravatar_url(@user), { size: 500 }) %>' alt='' >
+            </div>
+        </div>
+        <%= render 'likes/follow_button', user: @user %>
+    </aside>
+    <div class='col-xs-8'>
+       <ul class='nav nav-tabs nav-justtified'>
+           <li class='<%= 'active' if current_page?(user_path(@user_path)) %>'><%= link_to user_path(@user) do %>Microposts<span class='badge'><%= @count_microposts %></span><% end %></li>
+           <li class='<%= 'active' if current_page?(like_path(@like_path)) %>'><%= link_to like_path(@like) do %>Likes<span class='badge'><%= @count_likes %></span><% end %></li>
+           <li class='<%= 'active' if current_page?(like_microposts_path(@like_microposts_path)) %>'><%= link_to like_microposts_path(@like_microposts) do %>Like_microposts<span class='badge'><%= @count_microposts %></span><% end %></li>
+       </ul> 
+       <%= render 'likes/likes', likes: @likes %>
+    </div>
+</div>

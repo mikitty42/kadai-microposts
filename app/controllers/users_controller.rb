@@ -38,6 +38,18 @@ end
     @followers = @user.followers.page(params[:page])
     counts(@user)
   end
+  
+  def likes
+    @user = User.find(params[:id])
+    @likes = @user.like.page(params[:page])
+    counts(@like)
+  end
+    
+    def like_microposts
+      @user = User.find(params[:id])
+      @like_microposts = @user.like_microposts.page(params[:page])
+      counts(@like)
+    end
 
 private
 def user_params
